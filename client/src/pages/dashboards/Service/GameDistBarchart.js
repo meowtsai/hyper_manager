@@ -17,6 +17,7 @@ const GameDistBarchart = ({ stat, cs_members = [], selectStaff }) => {
   const processData = stat.map(item => item.status_process);
   const doneData = stat.map(item => item.status_done);
   const robotData = stat.map(item => item.status_robot);
+
   const apexBarChartStackedOpts = {
     chart: {
       height: 260,

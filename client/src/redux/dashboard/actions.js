@@ -1,6 +1,10 @@
 // @flow
 import axios from "axios";
-import { GET_SERVICE_DATA_SUCCESS, GET_SERVICE_DATA_FAILED } from "./constants";
+import {
+  GET_SERVICE_DATA_SUCCESS,
+  GET_SERVICE_DATA_FAILED,
+  LOADING_BEGIN
+} from "./constants";
 
 // const beginLoading = () => ({
 //   type: LOADING_BEGIN
@@ -13,7 +17,9 @@ import { GET_SERVICE_DATA_SUCCESS, GET_SERVICE_DATA_FAILED } from "./constants";
  */
 export const getServiceData = (startDate, endDate) => dispatch => {
   //console.log("getServiceData callled");
-  //dispatch(beginLoading);
+  dispatch({
+    type: LOADING_BEGIN
+  });
 
   const config = {
     headers: {

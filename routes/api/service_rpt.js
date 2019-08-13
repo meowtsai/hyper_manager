@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const serviceRpt = require("../../models/serviceRptModel");
+const serviceRpt = require("../../models/ServiceRptModel");
 const Admin_user = require("../../models/Admin_user");
 const moment = require("moment");
 const auth = require("../../middleware/auth");
