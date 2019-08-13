@@ -6,7 +6,7 @@ const app = express();
 app.use(express.json());
 
 app.use("/api/auth", require("./routes/api/auth"));
-app.use("/api/service_rpt", require("./routes/api/Service_rpt"));
+app.use("/api/service_rpt", require("./routes/api/service_rpt"));
 
 //serve static assets if in production
 if (process.env.NODE_ENV === "production" || process.env.NODE_ENV === "stage") {
