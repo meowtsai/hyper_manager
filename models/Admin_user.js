@@ -56,9 +56,9 @@ const Admin_user = {
       .query("Update admin_users set ? where uid=?", [{ password }, uid])
       .then(([rows, fields]) => {
         if (rows.affectedRows > 0) {
-          return rows;
+          return true;
         } else {
-          return { error: "更新失敗" };
+          return false;
         }
       })
       .catch(err => ({ error: err.message }));

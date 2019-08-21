@@ -7,6 +7,10 @@ app.use(express.json());
 
 app.use("/api/auth", require("./routes/api/auth"));
 app.use("/api/service_rpt", require("./routes/api/service_rpt"));
+app.use("/api/events", require("./routes/api/events"));
+app.use("/api/games", require("./routes/api/games"));
+app.use("/api/serial", require("./routes/api/serial"));
+app.use("/api/platform", require("./routes/api/platform"));
 
 //serve static assets if in production
 if (process.env.NODE_ENV === "production" || process.env.NODE_ENV === "stage") {

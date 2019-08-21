@@ -10,9 +10,9 @@ import logo from "../assets/images/logo-light.png";
 
 const ProfileMenus = [
   {
-    label: "My Account",
-    icon: "mdi mdi-account-circle",
-    redirectTo: "/"
+    label: "修改密碼",
+    icon: "mdi mdi-account-key-outline",
+    redirectTo: "/platform/modify_password"
   },
 
   {
