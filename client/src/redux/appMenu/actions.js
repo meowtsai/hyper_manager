@@ -17,6 +17,7 @@ const initMenu = () => ({
  * Initilizes the menu
  */
 export const initMenuAndItems = () => dispatch => {
+  console.log("*** initMenuAndItems called");
   dispatch(initMenu);
   try {
     const menuItems = assignIds(routes);
@@ -31,6 +32,7 @@ export const initMenuAndItems = () => dispatch => {
  * @param {*} menuItems
  */
 const getActivatedMenuItemIds = menuItems => {
+  //console.log("*** getActivatedMenuItemIds called", menuItems);
   var matchingItems = [];
   for (var menuItem of menuItems) {
     if (window.location.pathname.indexOf(menuItem.path) === 0)
@@ -51,10 +53,19 @@ const initMenuSuccess = menuItems => ({
   payload: { menuItems }
 });
 
-export const changeActiveMenuFromLocation = () => ({
-  type: CHANGE_ACTIVE_MENU_FROM_LOCATION,
-  payload: {}
-});
+export const changeActiveMenuFromLocation = () => dispatch => {
+  //console.log("*** changeActiveMenuFromLocation called");
+  dispatch({
+    type: CHANGE_ACTIVE_MENU_FROM_LOCATION,
+    payload: {}
+  });
+  try {
+    const menuItems = assignIds(routes);
+    const activatedMenuItemIds = getActivatedMenuItemIds(menuItems);
+
+    dispatch(changeActiveMenuFromLocationSuccess(activatedMenuItemIds));
+  } catch (error) {}
+};
 
 const changeActiveMenuFromLocationSuccess = activatedMenuItemIds => ({
   type: CHANGE_ACTIVE_MENU_FROM_LOCATION_SUCCESS,

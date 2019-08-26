@@ -18,7 +18,7 @@ const SerialEventList = ({
   return (
     <ul>
       {serialEvents.map(se => (
-        <li key={`se-${se.id}`}>
+        <li key={`sev-${event_id}-${se.id}`}>
           {se.id} - {se.title} ({" "}
           <span className="text-success"> 已兌換: {se.redeemed} </span> /{" "}
           <span className="text-dark">總數: {se.qty} </span>){" "}

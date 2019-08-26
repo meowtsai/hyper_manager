@@ -63,6 +63,20 @@ const ModifyPassword = React.lazy(() =>
   import("../pages/platform/ModifyPassword")
 );
 
+//offline cs
+const CplCaseHome = React.lazy(() =>
+  import("../pages/offline/cpl_case/CplCaseHome")
+);
+const GovLetterHome = React.lazy(() =>
+  import("../pages/offline/gov_letter/GovLetterHome")
+);
+const PersonalVisitHome = React.lazy(() =>
+  import("../pages/offline/personal_visit/PersonalVisitHome")
+);
+const PersonalVisitForm = React.lazy(() =>
+  import("../pages/offline/personal_visit/PersonalVisitForm")
+);
+
 // root routes
 const rootRoute = {
   path: "/",
@@ -172,6 +186,8 @@ const eventRoutesSub = {
 };
 
 const platformRoutesSub = {
+  path: "/platform",
+  name: "Platform",
   children: [
     {
       path: "/platform/modify_password",
@@ -182,6 +198,50 @@ const platformRoutesSub = {
   ]
 };
 
+// offline cs
+const offlineRoutes = {
+  path: "/offline",
+  name: "線下客服區",
+  icon: "dripicons-briefcase",
+  children: [
+    {
+      path: "/offline/cpl_case",
+      name: "消保",
+      component: CplCaseHome,
+      route: PrivateRoute
+    },
+    {
+      path: "/offline/gov_letter",
+      name: "公函",
+      component: GovLetterHome,
+      route: PrivateRoute
+    },
+    {
+      path: "/offline/personal_visit/home",
+      name: "親訪",
+      component: PersonalVisitHome,
+      route: PrivateRoute
+    }
+  ]
+};
+const offlineRoutesSub = {
+  path: "/offline",
+  name: "offlineCS",
+  children: [
+    {
+      path: "/offline/personal_visit/create",
+      name: "新增親訪紀錄",
+      component: PersonalVisitForm,
+      route: PrivateRoute
+    },
+    {
+      path: "/offline/personal_visit/edit/:record_id",
+      name: "編輯親訪紀錄",
+      component: PersonalVisitForm,
+      route: PrivateRoute
+    }
+  ]
+};
 // flatten the list of all nested routes
 const flattenRoutes = routes => {
   let flatRoutes = [];
@@ -205,11 +265,13 @@ const allRoutes = [
   eventRoutes,
   eventRoutesSub,
   platformRoutesSub,
-  pageRoutes
+  pageRoutes,
+  offlineRoutes,
+  offlineRoutesSub
 ];
 
 //所有要在leftSideBar顯示的路徑
-const authProtectedRoutes = [dashboardRoutes, eventRoutes];
+const authProtectedRoutes = [dashboardRoutes, eventRoutes, offlineRoutes];
 
 const allFlattenRoutes = flattenRoutes(allRoutes);
 

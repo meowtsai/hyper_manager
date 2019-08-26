@@ -29,6 +29,19 @@ const Admin_user = {
       })
       .catch(err => ({ error: err.message }));
   },
+  findAllByRole: async role => {
+    return await db2
+      .promise()
+      .query("select uid,account,name from admin_users where role=?", [role])
+      .then(([rows, fields]) => {
+        if (rows.length > 0) {
+          return rows;
+        } else {
+          return [];
+        }
+      })
+      .catch(err => ({ error: err.message }));
+  },
   save: async user => {
     return await db1
       .promise()

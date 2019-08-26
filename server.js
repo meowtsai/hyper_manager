@@ -11,6 +11,9 @@ app.use("/api/events", require("./routes/api/events"));
 app.use("/api/games", require("./routes/api/games"));
 app.use("/api/serial", require("./routes/api/serial"));
 app.use("/api/platform", require("./routes/api/platform"));
+app.use("/api/servers", require("./routes/api/servers"));
+app.use("/api/offline_cs", require("./routes/api/offline_cs"));
+app.use("/api/admin_users", require("./routes/api/admin_users"));
 
 //serve static assets if in production
 if (process.env.NODE_ENV === "production" || process.env.NODE_ENV === "stage") {

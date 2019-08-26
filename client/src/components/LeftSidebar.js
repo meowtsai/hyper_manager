@@ -104,6 +104,11 @@ class LeftSidebar extends Component {
     const hideLogo = this.props.hideLogo || false;
     const hideUserProfile = this.props.hideUserProfile || false;
 
+    // console.log("LeftSidebar isCondensed", isCondensed);
+    // console.log("LeftSidebar isLight", isLight);
+    // console.log("LeftSidebar hideLogo", hideLogo);
+    // console.log("LeftSidebar hideUserProfile", hideUserProfile);
+
     return (
       <React.Fragment>
         <div className="left-side-menu" ref={node => (this.menuNodeRef = node)}>

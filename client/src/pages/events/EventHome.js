@@ -220,6 +220,7 @@ const EventHome = ({
     renderer: row => {
       if (row.type === 2) {
         return <SerialEventList event_id={row.id} />;
+        //return <span>123</span>;
       }
     }
   };

@@ -7,7 +7,10 @@ import AppMenu from "./appMenu/reducers";
 import Dashboard from "./dashboard/reducers";
 import Events from "./events/reducers";
 import Games from "./games/reducers";
+import Servers from "./servers/reducers";
 import Platform from "./platform/reducers";
+import AdminUsers from "./admin_users/reducers";
+import OfflineCS from "./offlinecs/reducers";
 
 export default combineReducers({
   Auth,
@@ -16,5 +19,8 @@ export default combineReducers({
   Dashboard,
   Events,
   Games,
-  Platform
+  Servers,
+  Platform,
+  AdminUsers,
+  OfflineCS
 });

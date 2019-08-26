@@ -19,6 +19,7 @@ const Routes = () => (
               roles={route.roles}
               exact={route.exact}
               component={withLayout(props => {
+                //console.log("route.path ", route.path, props);
                 return <route.component {...props} />;
               })}
             />

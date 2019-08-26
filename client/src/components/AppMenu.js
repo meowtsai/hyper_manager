@@ -17,6 +17,12 @@ const MenuItemWithChildren = ({
   subMenuClassNames,
   activatedMenuItemIds
 }) => {
+  // console.log("MenuItemWithChildren item ID", item.id);
+  // console.log("activatedMenuItemIds ", activatedMenuItemIds);
+  // console.log(
+  //   "MenuItemWithChildren activatedMenuItemIds",
+  //   activatedMenuItemIds
+  // );
   return (
     <li
       className={classNames("side-nav-item", {
@@ -103,10 +109,26 @@ const MenuItemLink = ({ item, className }) => {
  * Renders the application menu
  */
 
-const AppMenu = ({ initMenuAndItems, menu, history, mode }) => {
+const AppMenu = ({
+  initMenuAndItems,
+  changeActiveMenuFromLocation,
+  menu,
+  history,
+  mode
+}) => {
   useEffect(() => {
-    if (!menu.menuItems) initMenuAndItems();
-    else initMenu();
+    if (!menu.menuItems) {
+      //console.log("propr init menu!!!*****");
+      initMenuAndItems();
+    } else {
+      //console.log("menu.menuItems", menu.menuItems);
+      new MetisMenu("#menu-bar");
+    }
+
+    history.listen((location, action) => {
+      //console.log("history.listen");
+      changeActiveMenuFromLocation();
+    });
     // eslint-disable-next-line
   }, []);
 
@@ -152,7 +174,7 @@ const AppMenu = ({ initMenuAndItems, menu, history, mode }) => {
     : menu
     ? menu.activatedMenuItemIds
     : [] || [];
-
+  //console.log("activatedKeys", activatedKeys);
   return (
     <Fragment>
       <div className={classNames({ "topbar-nav": isHorizontal })}>
