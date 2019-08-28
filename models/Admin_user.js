@@ -80,8 +80,11 @@ const Admin_user = {
     return await db2
       .promise()
       .query(
-        "select count(*) as cnt from admin_permissions where role=? and resource=? and instr(operations,?) >0",
-        [role, resource, op]
+        `select count(*) as cnt 
+        from admin_permissions 
+        where (role =?  or role =(select parent from admin_roles where role=?))
+        and resource=? and instr(operations,?) >0`,
+        [role, role, resource, op]
       )
       .then(([rows, fields]) => {
         if (rows[0].cnt > 0) {

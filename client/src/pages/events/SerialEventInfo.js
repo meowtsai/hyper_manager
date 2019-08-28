@@ -27,8 +27,8 @@ const SerialEventInfo = ({
   location,
   match
 }) => {
-  console.log("location", location);
-  console.log("match", match.params.event_id);
+  // console.log("location", location);
+  // console.log("match", match.params.event_id);
 
   const event_id = match.params.event_id;
   const [arrangedLogs, setArrangedLogs] = useState(serialLogs);

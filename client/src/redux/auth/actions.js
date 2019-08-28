@@ -33,7 +33,7 @@ export const loginUser = (account, password) => async dispatch => {
       });
     })
     .catch(err => {
-      console.log("err", err.response);
+      //console.log("err", err.response);
       let message;
       switch (err.response.status) {
         case 500:
